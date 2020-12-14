@@ -41,7 +41,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String username = edtUsername.getText().toString();
                 String password = edtPassword.getText().toString();
-                //validata form
+                //validate form
                 if (validataLogin(username, password)) {
                     //do login
                     doLogin(username, password);
@@ -61,10 +61,10 @@ public class LoginActivity extends AppCompatActivity {
         }
         return true;
     }
-
     private void doLogin(final String username, final String password) {
-        Log.i("in function doLogin :", username + password);
+        Log.e("in doLogin before Call:", username + password);
         Call call = userService.login(username, password);
+        Log.e("in doLogin after Call:", username + password);
         call.enqueue(new Callback() {
             @Override
             public void onResponse(Call call, Response response) {

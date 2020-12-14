@@ -7,6 +7,7 @@ import retrofit2.http.POST;
 import retrofit2.http.Path;
 
 public interface UserService {
-    @POST("login.php")
-    Call login(@Field("username") String username, @Field("password") String password);
+    @GET("login.php")
+    Call login(@Path("username") String username,
+               @Path("password") String password);
 }
