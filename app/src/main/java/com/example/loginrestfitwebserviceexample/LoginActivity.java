@@ -65,9 +65,9 @@ public class LoginActivity extends AppCompatActivity {
         Log.e("in doLogin before Call:", username + password);
         Call call = userService.login(username, password);
         Log.e("in doLogin after Call:", username + password);
-        call.enqueue(new Callback() {
+        call.enqueue(new Callback<ResObj>() {
             @Override
-            public void onResponse(Call call, Response response) {
+            public void onResponse(Call<ResObj> call, Response<ResObj> response) {
                 try {
                     if (response.isSuccessful()) {
                         ResObj resObj = (ResObj) response.body();
@@ -88,7 +88,7 @@ public class LoginActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call call, Throwable t) {
+            public void onFailure(Call<ResObj> call, Throwable t) {
                 Toast.makeText(LoginActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
